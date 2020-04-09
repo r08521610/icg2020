@@ -6,6 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/entry.unity
+    guid: 8081d7a2ed67a44c6957e139e100fb81
+  - enabled: 1
+    path: Assets/Scenes/lab01.unity
+    guid: 842e851d1300f4d6c9cf91fec8719e74
+  - enabled: 1
     path: Assets/Scenes/lab02.unity
     guid: c97a63651f0494f7f873153bc1483100
+  - enabled: 1
+    path: Assets/Scenes/lab03.unity
+    guid: 01a0ae14a333c4bb9aac076240fc5734
+  - enabled: 1
+    path: Assets/Scenes/lab04.unity
+    guid: cff0d8816406e4b7db54955886881352
   m_configObjects: {}
