@@ -25,6 +25,8 @@ public class CarEntity : MonoBehaviour
     float minVelocity = -6f;
     float m_DeltaMovement;
 
+    [SerializeField] SpriteRenderer[] m_Randerers = new SpriteRenderer[5];
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,23 +34,25 @@ public class CarEntity : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        var deltaTime = Time.fixedDeltaTime;
+
         if (Input.GetKey (KeyCode.UpArrow))
         {
             // Speed up
-            m_Velocity = Mathf.Min (maxVelocity, m_Velocity + Time.deltaTime * acceleration);
+            m_Velocity = Mathf.Min (maxVelocity, m_Velocity + deltaTime * acceleration);
         } 
         if (Input.GetKey (KeyCode.DownArrow))
         {
             // Break
-            m_Velocity = Mathf.Max (minVelocity, m_Velocity - Time.deltaTime * decceleration);
+            m_Velocity = Mathf.Max (minVelocity, m_Velocity - deltaTime * decceleration);
         }
         if (Input.GetKey (KeyCode.LeftArrow))
         {
             // Turn Left
             m_FrontWheelAngle = Mathf.Clamp (
-                m_FrontWheelAngle + Time.deltaTime * turnAngularVelocity,
+                m_FrontWheelAngle + deltaTime * turnAngularVelocity,
                 -WHEEL_ANGLE_LIMIT,
                 WHEEL_ANGLE_LIMIT
             );
@@ -58,13 +62,53 @@ public class CarEntity : MonoBehaviour
         {
             // Turn Right
             m_FrontWheelAngle = Mathf.Clamp (
-                m_FrontWheelAngle - Time.deltaTime * turnAngularVelocity,
+                m_FrontWheelAngle - deltaTime * turnAngularVelocity,
                 -WHEEL_ANGLE_LIMIT,
                 WHEEL_ANGLE_LIMIT
             );
             UpdateWheels();
         }
         UpdateCarTransform();
+    }
+
+    void OnCollisionEnter2D (Collision2D collision)
+    {
+        Stop ();
+        ChangeColor (Color.red);
+    }
+    void OnCollisionStay2D (Collision2D collision)
+    {
+        Stop ();
+    }
+    void OnCollisionExit2D (Collision2D collision)
+    {
+        ResetColor ();
+    }
+    void OnTriggerEnter2D (Collider2D other)
+    {
+        CheckPoint checkpoint = other.gameObject.GetComponent <CheckPoint> ();
+        if (checkpoint != null)
+        {
+            ChangeColor (Color.green);
+            this.Invoke ("ResetColor", 0.1f);
+        }
+    }
+
+    void ResetColor ()
+    {
+        ChangeColor(Color.white);
+    }
+    void ChangeColor (Color color)
+    {
+        foreach (SpriteRenderer renderer in m_Randerers)
+        {
+            renderer.color = color;
+        }
+    }
+
+    void Stop ()
+    {
+        m_Velocity = 0;
     }
 
     void UpdateWheels ()
