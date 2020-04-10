@@ -25,18 +25,18 @@ namespace ICG2020.Instance
       ),
       new Lab(
         name: "Interactable Entities - An Escape Game",
-        description: "",
+        description: "Make a simple and complete text-based game with Unity console.",
         sceneName: "lab02"
       ),
       new Lab (
         name: "2D Car Simulation",
-        description: "",
+        description: "☞ Complete a car visualization which can allow users to rotate its wheels.\n☞ Complete car behavior which can allow users to speed-up, break, and make turn.\n☞ Complete a tracing camera support camera-window.",
         sceneName: "lab03"
       ),
       new Lab (
         name: "2D Parking Simulation",
         description: "",
-        sceneName: "lab03"
+        sceneName: "lab04"
       )
     };
   }

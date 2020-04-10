@@ -7,23 +7,6 @@ using Unity.UIWidgets.material;
 
 namespace ICG2020.UI.Page
 {
-  public class Lab : UIWidgetsPanel
-  {
-    protected override void OnEnable() {
-      FontManager.instance.addFont(Resources.Load<Font>("MaterialIcons-Regular"), "Material Icons");
-
-      base.OnEnable();
-    }
-    protected override Widget createWidget ()
-    {
-      return new MaterialApp(
-        theme: ThemeData.dark(),
-        showPerformanceOverlay: false,
-        home: new LabUI()
-      );
-    }
-  }
-
   public class LabUI : StatelessWidget
   {
     public override Widget build (BuildContext context)
@@ -33,7 +16,10 @@ namespace ICG2020.UI.Page
         appBar: new AppBar(
           leading: new IconButton(
             icon: new Icon(Icons.arrow_back),
-            onPressed: () => SceneManager.LoadScene("entry")
+            onPressed: () => {
+              Navigator.pop(context);
+              SceneManager.LoadScene("entry");
+            }
           ),
           backgroundColor: Colors.transparent,
           elevation: 0

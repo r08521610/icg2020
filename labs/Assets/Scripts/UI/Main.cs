@@ -1,12 +1,19 @@
+using UnityEngine;
 using System.Collections.Generic;
 using Unity.UIWidgets.engine;
 using Unity.UIWidgets.widgets;
+using Unity.UIWidgets.ui;
 using Unity.UIWidgets.material;
 using Unity.UIWidgets.animation;
 using ICG2020.UI.Page;
 
 namespace UIWidgetsSample {
   public class Main : UIWidgetsPanel {
+    protected override void OnEnable() {
+      FontManager.instance.addFont(Resources.Load<Font>("MaterialIcons-Regular"), "Material Icons");
+
+      base.OnEnable();
+    }
     protected override Widget createWidget ()
     {
       return new MaterialApp(
@@ -15,7 +22,11 @@ namespace UIWidgetsSample {
         initialRoute: "/",
         routes: new Dictionary <string, WidgetBuilder>
         {
-          {"/", context => new EntryUI()}
+          {"/", context => new EntryUI()},
+          {"lab01", context => new LabUI()},
+          {"lab02", context => new LabUI()},
+          {"lab03", context => new LabUI()},
+          {"lab04", context => new LabUI()},
         }
       );
     }

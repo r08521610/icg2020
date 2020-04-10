@@ -19,10 +19,14 @@ namespace ICG2020.UI.Component
     public override Widget build (BuildContext context)
     {
       return new InkWell(
-        onTap: () => SceneManager.LoadScene(project.sceneName),
+        onTap: () => {
+          Navigator.pushNamed(context, project.sceneName);
+          SceneManager.LoadScene(project.sceneName);
+        },
         child: new Card (
           child: new ListTile(
-            title: new Text(project.name)
+            title: new Text(project.name),
+            subtitle: new Text(project.description)
           )
         )
       );
