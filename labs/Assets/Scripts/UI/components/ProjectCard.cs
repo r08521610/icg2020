@@ -20,8 +20,8 @@ namespace ICG2020.UI.Component
     {
       return new InkWell(
         onTap: () => {
-          Navigator.pushNamed(context, project.sceneName);
           SceneManager.LoadScene(project.sceneName);
+          Navigator.pushNamed(context, project.sceneName);
         },
         child: new Card (
           child: new ListTile(

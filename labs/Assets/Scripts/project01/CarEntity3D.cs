@@ -10,7 +10,7 @@ public class CarEntity3D : MonoBehaviour
   public GameObject wheelBackLeft;
 
   // Steering
-  float m_FrontWheelAngle = 0;
+  public float m_FrontWheelAngle = 0;
   const float WHEEL_ANGLE_LIMIT = 30f;
   public float turnAngularVelocity = 10f;
   public float autoTurnBackAngularVelocity = 20f;
@@ -46,7 +46,7 @@ public class CarEntity3D : MonoBehaviour
         m_Velocity = Mathf.Min (maxVelocity, m_Velocity + deltaTime * acceleration);
       else
         // Break down
-        m_Velocity = m_Velocity + deltaTime * decceleration;
+        m_Velocity = Mathf.Min (0, m_Velocity + deltaTime * decceleration);
     } 
     if (Input.GetKey (KeyCode.DownArrow))
     {
@@ -55,7 +55,7 @@ public class CarEntity3D : MonoBehaviour
         m_Velocity = Mathf.Max (minVelocity, m_Velocity - deltaTime * acceleration);
       else
         // Break down
-        m_Velocity = m_Velocity - deltaTime * decceleration;
+        m_Velocity = Mathf.Max (0, m_Velocity - deltaTime * decceleration);
     }
     
     if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow))
@@ -113,13 +113,13 @@ public class CarEntity3D : MonoBehaviour
       bool isForward = m_Velocity > 0;
       if (isForward)
       {
-          m_Velocity = Mathf.Max(0, m_Velocity - frictionDecceleration * Time.deltaTime);
+          m_Velocity = Mathf.Max(0, m_Velocity - frictionDecceleration * Time.fixedDeltaTime);
       } else 
       {
-          m_Velocity = Mathf.Min(0, m_Velocity + frictionDecceleration * Time.deltaTime);
+          m_Velocity = Mathf.Min(0, m_Velocity + frictionDecceleration * Time.fixedDeltaTime);
       }
     }
-    m_DeltaMovement = m_Velocity * Time.deltaTime;
+    m_DeltaMovement = m_Velocity * Time.fixedDeltaTime;
 
     if (m_DeltaMovement != 0) this.transform.Rotate (
       0f,

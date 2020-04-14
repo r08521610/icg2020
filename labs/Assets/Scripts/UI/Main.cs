@@ -27,6 +27,7 @@ namespace UIWidgetsSample {
           {"lab02", context => new LabUI()},
           {"lab03", context => new LabUI()},
           {"lab04", context => new LabUI()},
+          {"project01", context => new Project01UI()}
         }
       );
     }

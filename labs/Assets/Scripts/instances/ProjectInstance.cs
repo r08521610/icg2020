@@ -37,6 +37,11 @@ namespace ICG2020.Instance
         name: "2D Parking Simulation",
         description: "",
         sceneName: "lab04"
+      ),
+      new Project(
+        name: "2D Parking Simulator",
+        description: "In this project, you will develop a virtual parking garage and a car motion simulator.\nThe virtual parking garage is created by using the provided images. Your car will drive in the virtual parking garage and has to avoid obstacles to complete parking.\nThe physics model in the Lab04 needs to be included in the car motion simulator. Collision detection need also be included.",
+        sceneName: "project01"
       )
     };
   }
