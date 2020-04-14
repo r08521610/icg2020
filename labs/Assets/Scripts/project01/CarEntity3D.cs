@@ -131,4 +131,9 @@ public class CarEntity3D : MonoBehaviour
     );
     this.transform.Translate (Vector3.right * m_DeltaMovement);
   }
+
+  void Stop ()
+  {
+      m_Velocity = 0;
+  }
 }
