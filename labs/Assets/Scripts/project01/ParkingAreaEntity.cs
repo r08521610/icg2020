@@ -5,14 +5,14 @@ using UnityEngine;
 public class ParkingAreaEntity : MonoBehaviour
 {
     bool m_IsOccupied = false;
+    public bool isOccupied { get {return m_IsOccupied;} }
 
     MeshRenderer m_ParkingAreaRenderer;
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
-        m_ParkingAreaRenderer = this.GetComponent <MeshRenderer> ();
-        m_ParkingAreaRenderer.enabled = false;
+        Reset();
     }
 
     void OnTriggerEnter (Collider other)
@@ -26,13 +26,22 @@ public class ParkingAreaEntity : MonoBehaviour
         m_IsOccupied = Contains (this.GetComponent <BoxCollider> ().bounds, other.bounds);
         if (m_IsOccupied && !prev_IsOccupied) 
         {
-            ParkingGameGradingSystem.Instance.GainParkingPoints();
+            ParkingGameGradingSystem.Instance.GainParkingPoints(
+                this.transform.parent.GetComponent <ParkingEntity> ().Points
+            );
             ChangeColor (Color.green);
+            this.transform.parent.GetComponent <ParkingEntity> ().isParked = true;
         }
         else if (!m_IsOccupied && prev_IsOccupied) ChangeColor (Color.yellow);
     }
     void OnTriggerExit (Collider other)
     {
+        Reset();
+    }
+
+    public void Reset ()
+    {
+        m_ParkingAreaRenderer = this.GetComponent <MeshRenderer> ();
         m_ParkingAreaRenderer.enabled = false;
         m_IsOccupied = false;
         ChangeColor (Color.white);

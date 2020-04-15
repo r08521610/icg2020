@@ -28,10 +28,11 @@ public class CarEntity3D : MonoBehaviour
   float m_DeltaMovement;
 
 
-  // Start is called before the first frame update
-  void Start()
+  void OnEnable()
   {
-
+    Stop();
+    this.gameObject.transform.position = new Vector3 (50, 1, 50);
+    this.gameObject.transform.localEulerAngles = new Vector3 (0, 0, 0);
   }
 
   // Update is called once per frame
@@ -39,23 +40,29 @@ public class CarEntity3D : MonoBehaviour
   {
     var deltaTime = Time.fixedDeltaTime;
 
-    if (Input.GetKey (KeyCode.UpArrow))
-    {
-      if (m_Velocity >= 0)
-        // Speed up
-        m_Velocity = Mathf.Min (maxVelocity, m_Velocity + deltaTime * acceleration);
-      else
-        // Break down
-        m_Velocity = Mathf.Min (0, m_Velocity + deltaTime * decceleration);
-    } 
-    if (Input.GetKey (KeyCode.DownArrow))
-    {
-      if (m_Velocity <= 0)
-        // Speed up
-        m_Velocity = Mathf.Max (minVelocity, m_Velocity - deltaTime * acceleration);
-      else
-        // Break down
-        m_Velocity = Mathf.Max (0, m_Velocity - deltaTime * decceleration);
+    if (Input.GetKey (KeyCode.UpArrow) || Input.GetKey (KeyCode.DownArrow)) {
+      if (Input.GetKey (KeyCode.UpArrow))
+      {
+        this.GetComponent <Animator> ().Play ("Driving");
+        if (m_Velocity >= 0)
+          // Speed up
+          m_Velocity = Mathf.Min (maxVelocity, m_Velocity + deltaTime * acceleration);
+        else
+          // Break down
+          m_Velocity = Mathf.Min (0, m_Velocity + deltaTime * decceleration);
+      } 
+      if (Input.GetKey (KeyCode.DownArrow))
+      {
+        this.GetComponent <Animator> ().Play ("Driving");
+        if (m_Velocity <= 0)
+          // Speed up
+          m_Velocity = Mathf.Max (minVelocity, m_Velocity - deltaTime * acceleration);
+        else
+          // Break down
+          m_Velocity = Mathf.Max (0, m_Velocity - deltaTime * decceleration);
+      }
+    } else {
+      this.GetComponent <Animator> ().Play ("Stop");
     }
     
     if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow))

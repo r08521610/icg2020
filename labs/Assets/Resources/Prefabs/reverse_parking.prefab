@@ -3838,6 +3838,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7d4d36c7fa684ecba5edb8b36a53b4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parkingArea: {fileID: 1669744043154426724}
+  m_Deductions:
+  - {fileID: 8534352564565927762}
+  - {fileID: 2314669281300607542}
+  - {fileID: 1500681415306433698}
 --- !u!1 &6657150582920061268
 GameObject:
   m_ObjectHideFlags: 0
