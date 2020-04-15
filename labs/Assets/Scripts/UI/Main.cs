@@ -10,7 +10,7 @@ using ICG2020.UI.Page;
 namespace UIWidgetsSample {
   public class Main : UIWidgetsPanel {
     protected override void OnEnable() {
-      FontManager.instance.addFont(Resources.Load<Font>("MaterialIcons-Regular"), "Material Icons");
+      FontManager.instance.addFont(Resources.Load<Font>("MaterialIcons-Regular"), familyName: "Material Icons");
 
       base.OnEnable();
     }

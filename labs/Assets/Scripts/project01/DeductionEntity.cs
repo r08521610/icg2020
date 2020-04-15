@@ -5,21 +5,30 @@ using UnityEngine;
 public class DeductionEntity : MonoBehaviour
 {
     MeshRenderer m_DeductionRenderer;
+
     // Start is called before the first frame update
-    void Start()
+    void OnEnable ()
     {
         m_DeductionRenderer = this.GetComponent <MeshRenderer> ();
+        ChangeColor (Color.white);
+    }
+    void OnDisable ()
+    {
+        ChangeColor(Color.grey);
     }
 
     void OnCollisionEnter (Collision collision)
     {
-        ChangeColor (Color.red);
-        ParkingGameGradingSystem.Instance.LoseDeductionPoints();
+        if (this.enabled)
+        {
+            ChangeColor (Color.red);
+            ParkingGameGradingSystem.Instance.LoseDeductionPoints();
+        }
     }
 
     void OnCollisionExit (Collision collision)
     {
-        ChangeColor (Color.white);
+        if (this.enabled) ChangeColor (Color.white);
     }
 
     void ChangeColor (Color color)

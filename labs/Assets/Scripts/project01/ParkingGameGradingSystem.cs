@@ -20,6 +20,7 @@ public class ParkingGameGradingSystem : MonoBehaviour
     public float DEDUCTION_LOSE_POINTS = 10;
 
     public Text[] m_PointsUI;
+    public float duration = 0.5f;
     // Start is called before the first frame update
     void Awake()
     {
@@ -38,13 +39,25 @@ public class ParkingGameGradingSystem : MonoBehaviour
         UpdatePointsUI (ParkingGamePointsInstance.Instance.Points);
     }
 
-    public void GainParkingPoints () {
-        ParkingGamePointsInstance.Instance.gainPoints (PARKING_POINTS);
-        UpdatePointsUI (ParkingGamePointsInstance.Instance.Points);
+    public float GetCurrentPoints () => ParkingGamePointsInstance.Instance.Points;
+
+    public void GainParkingPoints (float points) {
+        var origin = ParkingGamePointsInstance.Instance.Points;
+        ParkingGamePointsInstance.Instance.gainPoints (points);
+        // UpdatePointsUI (ParkingGamePointsInstance.Instance.Points);
+        StartCoroutine(PointsUIUpdatingEffect(origin, ParkingGamePointsInstance.Instance.Points));
     }
     public void LoseDeductionPoints () {
+        var origin = ParkingGamePointsInstance.Instance.Points;
         ParkingGamePointsInstance.Instance.losePoints (DEDUCTION_LOSE_POINTS);
-        UpdatePointsUI (ParkingGamePointsInstance.Instance.Points);
+        // UpdatePointsUI (ParkingGamePointsInstance.Instance.Points);
+        StartCoroutine(PointsUIUpdatingEffect(origin, ParkingGamePointsInstance.Instance.Points));
+    }
+    public void Reset ()
+    {
+        var origin = ParkingGamePointsInstance.Instance.Points;
+        ParkingGamePointsInstance.Instance.reset();
+        StartCoroutine(PointsUIUpdatingEffect(origin, ParkingGamePointsInstance.Instance.Points));
     }
 
     void UpdatePointsUI (float points)
@@ -53,5 +66,15 @@ public class ParkingGameGradingSystem : MonoBehaviour
         {
             pointsUI.text = points.ToString();
         }
+    }
+
+    IEnumerator PointsUIUpdatingEffect (float origin, float current)
+    {
+        for (float i = 0; i < duration; i += Time.deltaTime)
+        {
+            UpdatePointsUI(Mathf.Lerp(origin, current, i / duration));
+            yield return null;
+        }
+        UpdatePointsUI(current);
     }
 }
