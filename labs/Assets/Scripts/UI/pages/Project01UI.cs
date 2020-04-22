@@ -49,7 +49,7 @@ namespace ICG2020.UI.Page
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: new List <Widget> {
                   new Text(
-                    "上下左右鍵控制車子，倒車入庫一次得 15 分；路邊停車 25 分；擦撞護欄扣 10 分。",
+                    "上下左右鍵控制車子，倒車入庫一次得 15 分；路邊停車 25 分；擦撞護欄扣 10 分。按 Enter 開始遊戲及返回開始畫面，遊戲中按 Esc 回開始畫面。",
                     textScaleFactor: 2
                   ),
                   new OutlineButton(

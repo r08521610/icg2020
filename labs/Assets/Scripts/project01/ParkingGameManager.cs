@@ -33,6 +33,22 @@ public class ParkingGameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            if (startScreen.activeSelf)
+            {
+                CreateSingleModeGame();
+            }
+            if (gameOverScreen.activeSelf || youWinScreen.activeSelf)
+            {
+                Back2StartScreen();
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Escape) && !startScreen.activeSelf)
+        {
+            Back2StartScreen();
+        }
+
         if (ParkingGameGradingSystem.Instance.GetCurrentPoints() <= 0)
         {
             GameOver ();
