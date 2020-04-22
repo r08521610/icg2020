@@ -33,7 +33,6 @@ public class ParkingGameGradingSystem : MonoBehaviour
         ParkingGamePointsInstance.Instance.reset();
     }
 
-    // Update is called once per frame
     void Start()
     {
         UpdatePointsUI (ParkingGamePointsInstance.Instance.Points);
