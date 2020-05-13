@@ -42,7 +42,22 @@ namespace ICG2020.Instance
         name: "2D Parking Simulator",
         description: "In this project, you will develop a virtual parking garage and a car motion simulator.\nThe virtual parking garage is created by using the provided images. Your car will drive in the virtual parking garage and has to avoid obstacles to complete parking.\nThe physics model in the Lab04 needs to be included in the car motion simulator. Collision detection need also be included.",
         sceneName: "project01"
-      )
+      ),
+      new Lab (
+        name: "Aircraft Simulation",
+        description: "",
+        sceneName: "lab05"
+      ),
+      new Lab (
+        name: "3D Physics",
+        description: "",
+        sceneName: "lab06"
+      ),
+      new Project(
+        name: "3D Construction Machines",
+        description: "In this project, you will develop a physics-based tower crane simulator. You also need to develop the functions to enable users to control the tower crane, so users are allowed to operate the crane to perform an erection task (i.e. to lift an object from a certain position to another). To be more specific, the following five parts will be included during grading.",
+        sceneName: "project02"
+      ),
     };
   }
 }

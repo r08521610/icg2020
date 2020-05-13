@@ -60,9 +60,9 @@ public class PrimitivesGenerator : MonoBehaviour
             var primitiveIns = GameObject.Instantiate (primitive);
             primitiveIns.transform.localPosition = new Vector3
             (
-                Random.Range (-m_Dimension.x, m_Dimension.x),
-                3f,
-                Random.Range (-m_Dimension.y, m_Dimension.y)
+                Random.Range (this.transform.position.x - m_Dimension.x, this.transform.position.x + m_Dimension.x),
+                this.transform.position.y + 3f,
+                Random.Range (this.transform.position.z - m_Dimension.y, this.transform.position.z + m_Dimension.y)
             );
         }
     }
