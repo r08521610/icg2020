@@ -17,8 +17,6 @@ public class TrolleyEntity : MonoBehaviour
         m_Rigidbody = this.GetComponent <Rigidbody> ();
         if (m_Cable == null) {
 			m_Cable = gameObject.AddComponent<LineRenderer>();
-            m_Cable.SetWidth(0.1f, 0.1f);
-            m_Cable.SetColors(Color.blue, Color.green);
 		}
     }
 
@@ -29,7 +27,6 @@ public class TrolleyEntity : MonoBehaviour
 
         if (Input.GetKey (KeyCode.Q))
         {
-            // Project02.CameraCenter.Instance.TurnOnSideViewCam();
             var limit = m_JointForHook.linearLimit;
             limit.limit -= MOVE_SPEED * Time.deltaTime;
             m_JointForHook.linearLimit = limit;
@@ -37,7 +34,6 @@ public class TrolleyEntity : MonoBehaviour
         }
         if (Input.GetKey (KeyCode.E))
         {
-            // Project02.CameraCenter.Instance.TurnOnSideViewCam();
             var limit = m_JointForHook.linearLimit;
             limit.limit += MOVE_SPEED * Time.deltaTime;
             m_JointForHook.linearLimit = limit;
@@ -46,12 +42,10 @@ public class TrolleyEntity : MonoBehaviour
 
         if(Input.GetKey(KeyCode.W) && transform.localPosition.y > -17f)
         {
-            // Project02.CameraCenter.Instance.TurnOnGodViewCam();
 			transform.Translate(MOVE_SPEED * Vector3.down * Time.deltaTime);
 		}
 		if(Input.GetKey(KeyCode.S) && transform.localPosition.y < 3f)
         {
-            // Project02.CameraCenter.Instance.TurnOnGodViewCam();
 			transform.Translate(MOVE_SPEED * Vector3.up * Time.deltaTime);
 		}
     }
