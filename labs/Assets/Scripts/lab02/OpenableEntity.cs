@@ -5,8 +5,8 @@ using UnityEngine;
 public class OpenableEntity : Entity
 {
     string m_KeyIdentifier;
-    public OpenableEntity (string name, string keyIdentifier)
-    : base (name) {
+    public OpenableEntity (EscapeGame game, string name, string keyIdentifier, Vector3 position)
+    : base (game, name, position) {
         m_KeyIdentifier = keyIdentifier;
     }
     public override void Inspect()
@@ -18,19 +18,19 @@ public class OpenableEntity : Entity
         }
         Debug.Log ("Use the right key to open this.");
     }
-    public override void Interact(EscapeGame game)
+    public override void Interact(Entity entity = null)
     {
         if (string.IsNullOrEmpty (m_KeyIdentifier))
         {
-            Open (game);
+            Open ();
             return;
         }
-        KeyEntity key = game.TakenEntity as KeyEntity;
+        KeyEntity key = entity as KeyEntity;
         if (key != null)
         {
             if (key.Identifier == m_KeyIdentifier)
             {
-                Open (game);
+                Open ();
             } else {
                 Debug.Log (string.Format ("This item cannot be opened by the key <color=white>{0}</color>", key.Name));
             }
@@ -38,7 +38,7 @@ public class OpenableEntity : Entity
             Debug.Log ("You need a key to open it.");
         }
     }
-    protected virtual void Open (EscapeGame game) {
+    protected virtual void Open () {
         Debug.Log ("Succeed to open the item, but nothing happened.");
     }
 }

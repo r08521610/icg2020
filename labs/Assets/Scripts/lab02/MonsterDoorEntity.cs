@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class MonsterDoorEntity : DoorEntity
 {
-    public MonsterDoorEntity (string name, string identifier = null) : base (name, identifier) {}
-    protected override void Open(EscapeGame game)
+    public MonsterDoorEntity (EscapeGame game, string name, string identifier, Vector3 position)
+    : base (game, name, identifier, position) {}
+    protected override void Open()
     {
         Debug.Log("<color=red>You release a monster.</color>");
-        game.Die();
+        Game.Die();
     }
 }
