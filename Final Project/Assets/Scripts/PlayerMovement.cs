@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
+	[SerializeField] string m_HorizontalKey;
+	[SerializeField] string m_JumpKey;
+	[SerializeField] string m_CrouchKey;
 	[SerializeField] CharacterController2D controller;
 	[SerializeField] Animator animator;
 
@@ -16,20 +19,20 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+		horizontalMove = Input.GetAxisRaw(m_HorizontalKey) * runSpeed;
 
 		animator.SetFloat ("Speed", Mathf.Abs(horizontalMove));
 
-		if (Input.GetButtonDown("Jump"))
+		if (Input.GetButtonDown(m_JumpKey))
 		{
 			jump = true;
 			animator.SetBool ("IsJumping", true);
 		}
 
-		if (Input.GetButtonDown("Crouch"))
+		if (Input.GetButtonDown(m_CrouchKey))
 		{
 			crouch = true;
-		} else if (Input.GetButtonUp("Crouch"))
+		} else if (Input.GetButtonUp(m_CrouchKey))
 		{
 			crouch = false;
 		}
