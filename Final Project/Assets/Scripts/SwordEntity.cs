@@ -6,7 +6,7 @@ public class SwordEntity : MonoBehaviour
 {
   [SerializeField] string m_ButtonKey = "Fire2";
   [SerializeField] int damage = 60;
-  [SerializeField] float m_WieldRadius = 4.2f;
+  [SerializeField] float m_WieldRadius = 1.9f;
   [SerializeField] private LayerMask m_AttackObject;
   [SerializeField] Animator animator;
 
@@ -22,7 +22,6 @@ public class SwordEntity : MonoBehaviour
 
   void Wield ()
   {
-    Debug.Log ("Wield");
     RaycastHit2D[] hits = Physics2D.CircleCastAll (transform.position, m_WieldRadius, transform.right, m_WieldRadius, m_AttackObject);
     List <GameObject> gameObjects = new List <GameObject> ();
     foreach (RaycastHit2D hit in hits)

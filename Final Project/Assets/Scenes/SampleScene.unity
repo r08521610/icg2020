@@ -613,6 +613,7 @@ MonoBehaviour:
   health: 150
   deathEffect: {fileID: 494490080395304124, guid: 0a360a4cdc1d64ae08645310843718a7,
     type: 3}
+  animator: {fileID: 357503912}
 --- !u!1 &564919114
 GameObject:
   m_ObjectHideFlags: 0
@@ -857,6 +858,7 @@ MonoBehaviour:
   health: 100
   deathEffect: {fileID: 494490080395304124, guid: 0a360a4cdc1d64ae08645310843718a7,
     type: 3}
+  animator: {fileID: 591189363}
 --- !u!70 &591189367
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
