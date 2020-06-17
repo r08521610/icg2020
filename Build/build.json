@@ -1,9 +1,9 @@
 {
 "companyName": "DefaultCompany",
 "productName": "icg2020_labs",
-"dataUrl": "build.data.unityweb",
-"wasmCodeUrl": "build.wasm.code.unityweb",
-"wasmFrameworkUrl": "build.wasm.framework.unityweb",
+"dataUrl": "Build.data.unityweb",
+"wasmCodeUrl": "Build.wasm.code.unityweb",
+"wasmFrameworkUrl": "Build.wasm.framework.unityweb",
 "TOTAL_MEMORY": 570425344,
 "graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
 "webglContextAttributes": {"preserveDrawingBuffer": false},
