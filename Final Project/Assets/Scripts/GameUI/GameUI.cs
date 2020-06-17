@@ -7,6 +7,7 @@ public class GameUI : MonoBehaviour
   [SerializeField] GameScene m_GameScene;
   [SerializeField] GameObject m_LobbyUI;
   [SerializeField] GameObject m_SelectCharactersUI;
+  [SerializeField] GameObject m_OnlineMenu;
 
   void Awake()
   {
@@ -18,10 +19,16 @@ public class GameUI : MonoBehaviour
     m_LobbyUI.SetActive (false);
     m_SelectCharactersUI.SetActive (true);
   }
+  public void StartOnlineGame ()
+  {
+    m_LobbyUI.SetActive (false);
+    m_OnlineMenu.SetActive (true);
+  }
   public void BackToLobby ()
   {
     m_LobbyUI.SetActive (true);
     m_SelectCharactersUI.SetActive (false);
+    m_OnlineMenu.SetActive (false);
   }
 
   public void StartGame ()
