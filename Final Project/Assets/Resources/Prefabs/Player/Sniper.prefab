@@ -358,9 +358,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ButtonKey: Fire1
   animator: {fileID: 4436607397393201983}
-  m_ChargeTime: 5
+  m_ChargeTime: 2
+  m_ChargeIncreaseRatio: 1.1
   firePoint: {fileID: 4436607396696608712}
   bulletPrefab: {fileID: 324470668607606829, guid: 304ce1f21dec542269a59930593acfb4,
+    type: 3}
+  chargedBulletPrefab: {fileID: 3468258416762324267, guid: e4eef5f012af6489badb4dfe209a984d,
     type: 3}
 --- !u!114 &4436607397393201977
 MonoBehaviour:

@@ -7,11 +7,11 @@ public class WeaponEntity : MonoBehaviour
   [SerializeField] bool m_IsReusable = true;
 
   virtual protected void Initial () {}
-  virtual public void Trigger (HealthBehavior playerHealth)
+  virtual public void Trigger (HealthBehavior playerHealth, float ratio=1f)
   {
     if (playerHealth != null)
     {
-      playerHealth.TakeDamage (damage);
+      playerHealth.TakeDamage ((int) Mathf.Round (damage * ratio));
     }
     Instantiate (impactEffect, transform.position, transform.rotation);
     if (!m_IsReusable) Destroy (gameObject);

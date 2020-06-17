@@ -6,7 +6,8 @@ public class AttackBehavior : MonoBehaviour
 {
   [SerializeField] protected string m_ButtonKey = "Fire2";
   [SerializeField] protected Animator animator;
-  [SerializeField] protected float m_ChargeTime = 5f;
+  [SerializeField] protected float m_ChargeTime = 2f;
+  [SerializeField] protected float m_ChargeIncreaseRatio = 1.1f;
   private float m_ChargeTimer = 0f;
 
   virtual protected void Attack () {}

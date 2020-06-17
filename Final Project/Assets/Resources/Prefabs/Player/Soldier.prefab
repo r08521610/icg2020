@@ -376,7 +376,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ButtonKey: Fire2
   animator: {fileID: 267818288513862377}
-  m_ChargeTime: 5
+  m_ChargeTime: 2
+  m_ChargeIncreaseRatio: 1.1
   m_Sword: {fileID: 267818286738853749}
 --- !u!114 &2585823883356308412
 MonoBehaviour:

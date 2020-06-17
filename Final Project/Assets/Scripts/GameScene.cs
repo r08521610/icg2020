@@ -17,8 +17,11 @@ public class GameScene : MonoBehaviour
 
   void OnDestroy ()
   {
-    m_Game.OnGameStarted -= HandleOnGameStarted;
-    m_Game.OnGameEnded -= HandleOnGameEnded;
+    if (m_Game != null)
+    {
+      m_Game.OnGameStarted -= HandleOnGameStarted;
+      m_Game.OnGameEnded -= HandleOnGameEnded;
+    }
   }
 
   #region Game Event Handlers
