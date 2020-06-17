@@ -16,7 +16,10 @@ public class SwordAttackBehavior : AttackBehavior
       if (hit.collider.gameObject != gameObject)
       {
         HealthBehavior player = hit.collider.GetComponent <HealthBehavior> ();
-        m_Sword.Trigger (player);
+        if (player != null) m_Sword.Trigger (player);
+
+        Entity entity = hit.collider.GetComponent <Entity> ();
+        if (entity != null) entity.Interact ();
       }
     }
   }
@@ -31,7 +34,10 @@ public class SwordAttackBehavior : AttackBehavior
       if (hit.collider.gameObject != gameObject)
       {
         HealthBehavior player = hit.collider.GetComponent <HealthBehavior> ();
-        m_Sword.Trigger (player, m_ChargeIncreaseRatio);
+        if (player != null) m_Sword.Trigger (player, m_ChargeIncreaseRatio);
+
+        Entity entity = hit.collider.GetComponent <Entity> ();
+        if (entity != null) entity.Interact ();
       }
     }
   }

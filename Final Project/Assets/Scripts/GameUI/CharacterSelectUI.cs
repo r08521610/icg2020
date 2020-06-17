@@ -48,6 +48,8 @@ public class CharacterSelectUI : MonoBehaviour
   {
     m_CharacterInfoButtonFront.ResetOrder ();
     m_CharacterInfoButtonBack.ResetOrder ();
+
+    m_GameStartButton.SetActive (false);
   }
 
   void SelectCharacter (int player, CharacterInfo character)

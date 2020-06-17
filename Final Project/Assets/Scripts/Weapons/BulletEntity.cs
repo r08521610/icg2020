@@ -9,4 +9,10 @@ public class BulletEntity : WeaponEntity
   {
     rb.velocity = transform.right * speed;
   }
+
+  override public void Interact()
+  {
+    Instantiate (impactEffect, transform.position, transform.rotation);
+    Destroy (gameObject);
+  }
 }

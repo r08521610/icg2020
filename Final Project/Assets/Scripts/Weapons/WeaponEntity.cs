@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class WeaponEntity : MonoBehaviour
+public class WeaponEntity : Entity
 {
   [SerializeField] int damage = 40;
-  [SerializeField] GameObject impactEffect;
+  [SerializeField] protected GameObject impactEffect;
   [SerializeField] bool m_IsReusable = true;
 
   virtual protected void Initial () {}
@@ -25,6 +25,6 @@ public class WeaponEntity : MonoBehaviour
   void OnTriggerEnter2D (Collider2D hitInfo)
   {
     HealthBehavior playerHealth = hitInfo.GetComponent <HealthBehavior> ();
-    Trigger (playerHealth);
+    if (playerHealth != null) Trigger (playerHealth);
   }
 }
