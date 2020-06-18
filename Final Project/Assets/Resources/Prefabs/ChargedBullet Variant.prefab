@@ -7,10 +7,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 324470668607606828, guid: 304ce1f21dec542269a59930593acfb4,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.049928807
+      objectReference: {fileID: 0}
+    - target: {fileID: 324470668607606828, guid: 304ce1f21dec542269a59930593acfb4,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.9622642
+      objectReference: {fileID: 0}
+    - target: {fileID: 324470668607606828, guid: 304ce1f21dec542269a59930593acfb4,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.7650067
+      objectReference: {fileID: 0}
     - target: {fileID: 324470668607606829, guid: 304ce1f21dec542269a59930593acfb4,
         type: 3}
       propertyPath: m_Name
-      value: ChargedBullet
+      value: ChargedBullet Variant
       objectReference: {fileID: 0}
     - target: {fileID: 324470668607606831, guid: 304ce1f21dec542269a59930593acfb4,
         type: 3}
@@ -67,6 +82,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 324470668607606831, guid: 304ce1f21dec542269a59930593acfb4,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 324470668607606831, guid: 304ce1f21dec542269a59930593acfb4,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 8595164353638613037, guid: 304ce1f21dec542269a59930593acfb4,
         type: 3}
       propertyPath: damage
@@ -75,7 +100,7 @@ PrefabInstance:
     - target: {fileID: 8595164353638613037, guid: 304ce1f21dec542269a59930593acfb4,
         type: 3}
       propertyPath: speed
-      value: 30
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 304ce1f21dec542269a59930593acfb4, type: 3}

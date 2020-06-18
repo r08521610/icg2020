@@ -39,11 +39,17 @@ public class GameScene : MonoBehaviour
   }
   void HandleOnGameEnded (Game game)
   {
+    StartCoroutine (GameEnd ());
+  }
+  #endregion
+
+  IEnumerator GameEnd ()
+  {
+    yield return new WaitForSeconds (5f);
     foreach (var player in m_Game.Players)
     {
       player.Die ();
     }
     m_Game.Players.Clear ();
   }
-  #endregion
 }

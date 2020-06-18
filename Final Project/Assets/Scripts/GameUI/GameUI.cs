@@ -40,7 +40,13 @@ public class GameUI : MonoBehaviour
   #region Game Event Handlers
   void HandleOnGameEnded (Game game)
   {
-    m_LobbyUI.SetActive (true);
+    StartCoroutine (GameEnd ());
   }
   #endregion
+
+  IEnumerator GameEnd ()
+  {
+    yield return new WaitForSeconds (5f);
+    m_LobbyUI.SetActive (true);
+  }
 }
