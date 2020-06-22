@@ -10,6 +10,9 @@ public class TurretEntity : MonoBehaviour
     [SerializeField] GameObject m_Target;
     [SerializeField] GameObject m_Base;
     [SerializeField] GameObject m_Gun;
+    
+    [SerializeField] Transform m_FirePoint;
+    [SerializeField] GameObject m_BulletPrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,5 +47,10 @@ public class TurretEntity : MonoBehaviour
             targetGunQuaternion,
             MAX_GUN_ROTATION_VELOCITY * Time.deltaTime
         );
+
+        if (Input.GetKeyDown (KeyCode.F))
+        {
+            Instantiate (m_BulletPrefab, m_FirePoint.position, m_FirePoint.rotation);
+        }
     }
 }

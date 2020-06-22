@@ -24,6 +24,7 @@ public class AircraftEntity : MonoBehaviour
     const float MAX_PITCH_VELOCITY = 100f;
 
     [SerializeField] Transform m_PlaneBodyTrans;
+    [SerializeField] GameObject m_AirPlaneBody;
 
     // Start is called before the first frame update
     void Start()
@@ -88,5 +89,11 @@ public class AircraftEntity : MonoBehaviour
                 Mathf.Max (0, m_PitchVelocity - PITCH_ACCELERATION * Time.deltaTime) :
                 Mathf.Min (0, m_PitchVelocity + PITCH_ACCELERATION * Time.deltaTime);
         }
+    }
+
+    void OnTriggerEnter (Collider collider)
+    {
+        Debug.Log ("Trigger");
+        Destroy (m_AirPlaneBody);
     }
 }
