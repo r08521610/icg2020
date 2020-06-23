@@ -6,8 +6,8 @@ public class BoxEntity : OpenableEntity
 {
     Entity m_Content;
     bool m_Closed = true;
-    public BoxEntity (string name, Entity content, string keyIdentifier)
-    : base (name, keyIdentifier) {
+    public BoxEntity (EscapeGame game, string name, Entity content, string keyIdentifier, Vector3 position)
+    : base (game, name, keyIdentifier, position) {
         m_Content = content;
     }
     public override void Inspect()
@@ -19,16 +19,27 @@ public class BoxEntity : OpenableEntity
             m_Content.Inspect();
         }
     }
-    public override void Interact(EscapeGame game)
+    public override void Interact(Entity entity = null)
     {
-        game.Putback();
-        game.Take(m_Content);
+        // game.Putback();
+        // game.Take(m_Content);
+        if (m_Closed)
+        {
+            m_Closed = false;
+        } else {
+            if (m_Content == null)
+            {
+                base.Interact (entity);
+            } else {
+                m_Content.Interact (entity);
+            }
+        }
     }
-    protected override void Open(EscapeGame game)
+    protected override void Open()
     {
         m_Closed = false;
         Debug.Log("Box is opened.");
-        game.Putback();
-        game.Take(m_Content);
+        // Game.Putback();
+        Game.Take(m_Content);
     }
 }

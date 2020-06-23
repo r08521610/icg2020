@@ -6,8 +6,8 @@ public class KeyEntity : Entity
 {
     string m_KeyIdentifier;
     public string Identifier {get { return m_KeyIdentifier; }}
-    public KeyEntity (string name, string keyIdentifier)
-    :base (name) {
+    public KeyEntity (EscapeGame game, string name, string keyIdentifier, Vector3 position)
+    :base (game, name, position) {
         m_KeyIdentifier = keyIdentifier;
     }
 
@@ -15,8 +15,8 @@ public class KeyEntity : Entity
     {
         Debug.Log ("A key for something. Maybe can used later.");
     }
-    public override void Interact (EscapeGame game)
+    public override void Interact (Entity entity = null)
     {
-        game.Take (this);
+        Game.Take (this);
     }
 }
