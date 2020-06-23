@@ -1,4 +1,7 @@
 Project/Library/il2cpp_cache/ filter=lfs diff=lfs merge=lfs -text
 Final[[:space:]]Project/Library/il2cpp_cache/ filter=lfs diff=lfs merge=lfs -text
 *.bc filter=lfs diff=lfs merge=lfs -text
+<<<<<<< HEAD
 .o filter=lfs diff=lfs merge=lfs -text
+=======
+>>>>>>> d3a41c98af10cd7b1c90fe754a4326aeab228bab
